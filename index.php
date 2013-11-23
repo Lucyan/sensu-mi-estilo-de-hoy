@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <title>- -</title>
         <link href="css/reset.css" rel="stylesheet">
+        <link href="fonts/stylesheet.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
     </head>
     <body>
@@ -15,7 +16,13 @@
 	    	<div id="content">
 	    	</div>
             <div id="footer">
-                
+                <a href="#">PREMIO</a>
+                <img src="img/footer/separacion.png" />
+                <a href="#">GANADORES</a>
+                <img src="img/footer/separacion.png" />
+                <a href="#">BASES</a>
+                <img src="img/footer/separacion.png" />
+                <a href="#">POLITICAS DE SEGURIDAD</a>
             </div>
 	    <?php else: ?>
 	    	<div id="nolike">

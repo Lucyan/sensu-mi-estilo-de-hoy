@@ -4,11 +4,24 @@ body, html {
 	margin: 0 auto;
 }
 
+a {
+	text-decoration: none;
+}
+
 div#content {
 	width: 810px;
 	height: 1250px;
 	position: relative;
 }
+
+/* HOME */
+
+div#home {
+	
+}
+
+
+/* FOOTER */
 
 div#footer {
 	background: url(../img/footer/bg.jpg);
@@ -18,4 +31,14 @@ div#footer {
 	position: relative;
 	clear: both;
 	text-align: center;
+}
+
+div#footer a {
+	font-family: 'blanchcondensed';
+	color: #e128a4;
+	font-size: 40px;
+	vertical-align: top;
+	top: 18px;
+	position: relative;
+	margin-left: 3px;
 }
