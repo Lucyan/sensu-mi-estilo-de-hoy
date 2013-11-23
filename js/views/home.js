@@ -1,7 +1,7 @@
 window.HomeView = Backbone.View.extend({
 	login: function() {
 		var el = this.el;
-		$(el).find('button.fblogin').fadeOut();
+		$(el).find('.fblogin').fadeOut();
 		window.activeSession.login({
 			before: function () {
 				$(el).find('img.loader').fadeIn();
@@ -9,10 +9,9 @@ window.HomeView = Backbone.View.extend({
 			after: function () {
 				$(el).find('img.loader').fadeOut(function() {
 					if (window.activeSession.isAuthorized()) {
-						$(el).find('div.nombre').html(window.activeSession.get('name'));
-						$(el).find('div.nombre').fadeIn();
+						window.location.replace('#formulario');
 					} else {
-						$(el).find('button.fblogin').fadeIn();
+						$(el).find('.fblogin').fadeIn();
 					}
 				});
 			}
@@ -28,21 +27,25 @@ window.HomeView = Backbone.View.extend({
 			after: function () {
 				$(el).find('img.loader').fadeOut(function() {
 					if (window.activeSession.isAuthorized()) {
-						$(el).find('div.nombre').html(window.activeSession.get('name'));
-						$(el).find('div.nombre').fadeIn();
+						$(el).find('.prelogin').fadeIn();
 					} else {
-						$(el).find('button.fblogin').fadeIn();
+						$(el).find('.fblogin').fadeIn();
 					}
 				});
 			}
 		}, false);
 	},
 
+	formulario: function() {
+		window.location.replace('#formulario');
+	},
+
 	events: {
-		'click .fblogin': 'login'
+		'click .fblogin': 'login',
+		'click .prelogin': 'formulario'
     },
 	initialize: function() {
-		_(this).bindAll('login', 'render');
+		_(this).bindAll('login', 'render', 'preLogin', 'formulario');
 	},
 
 	render: function() {

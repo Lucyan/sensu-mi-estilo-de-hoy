@@ -8,6 +8,11 @@ a {
 	text-decoration: none;
 }
 
+img.loader {
+	position: relative;
+	top: 1085px;
+}
+
 div#content {
 	width: 810px;
 	height: 1250px;
@@ -17,7 +22,17 @@ div#content {
 /* HOME */
 
 div#home {
-	
+	background: url(../img/home/bg.jpg);
+	width: 810px;
+	height: 1250px;
+	text-align: center;
+}
+
+div#home img.button {
+	display: none;
+	position: relative;
+	top: 1045px;
+	cursor: pointer;
 }
 
 
