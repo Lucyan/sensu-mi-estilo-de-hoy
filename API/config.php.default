@@ -1,0 +1,22 @@
+<?php
+
+$config = array(
+    'Facebook' => array(
+		'appId' => '387007024758935',
+		'apiKey' => 'a39f7e0e47428c328afb1343f24a62f7',
+		'secret' => 'a39f7e0e47428c328afb1343f24a62f7',
+		'cookie' => true,
+		'locale' => 'es_LA',
+		'permissions' => 'email,user_location,user_hometown,user_birthday,user_likes,user_about_me,user_relationships',
+		'appUrl' => 'http://www.facebook.com/ZoupLab/app_387007024758935',
+		'liked' => true,
+		'apiDir' => 'API'
+	),
+	'movil' => 'movil.html',
+	'mode' => 'development' // 'production'
+);
+
+$connections = array(
+	'development' => "mysql://root:@localhost/cristal_maestro_cristalero;charset=utf8",
+	'production' => "mysql://root:@localhost/cristal_maestro_cristalero;charset=utf8"
+);

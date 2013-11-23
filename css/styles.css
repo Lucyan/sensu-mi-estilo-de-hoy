@@ -1,0 +1,21 @@
+body, html {
+	width: 810px;
+	height: 1250px;
+	margin: 0 auto;
+}
+
+div#content {
+	width: 810px;
+	height: 1250px;
+	position: relative;
+}
+
+div#footer {
+	background: url(../img/footer/bg.jpg);
+	width: 810px;
+	height: 69px;
+	margin-top: -69px;
+	position: relative;
+	clear: both;
+	text-align: center;
+}

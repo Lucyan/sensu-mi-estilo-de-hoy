@@ -1,0 +1,13 @@
+<?php
+
+$session = array(
+    'expires' => '60 minutes',
+    'path' => '/',
+    'domain' => 'local.dev',
+    'secure' => false,
+    'httponly' => false,
+    'name' => 'MAGO',
+    'secret' => 'DYhG93b0qyJfIxfs2g4VoU4bWwvniR2G0JgaC9mi',
+    'cipher' => MCRYPT_RIJNDAEL_256,
+    'cipher_mode' => MCRYPT_MODE_CBC
+);
