@@ -82,6 +82,37 @@ div#formulario div.botones img.btn-siguiente {
 	cursor: pointer;
 }
 
+/* RULETA */
+
+div#ruleta {
+	background: url(../img/ruleta/bg.jpg);
+	width: 810px;
+	height: 1250px;
+	text-align: center;
+	padding: 0.1px;
+	position: relative;
+}
+
+div#ruleta img.titulo {
+	position: relative;
+	margin-top: 323px;
+	z-index: 2;
+}
+
+div#ruleta img.ruleta {
+	position: relative;
+	margin-top: -53px;
+	z-index: 1;
+}
+
+div#ruleta img.btn-girar {
+	position: absolute;
+	right: 0px;
+	top: 566px;
+	z-index: 3;
+	cursor: pointer;
+}
+
 /* FOOTER */
 
 div#footer {

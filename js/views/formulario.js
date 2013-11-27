@@ -5,6 +5,24 @@ window.FormularioView = Backbone.View.extend({
 		$(el).find('img.btn-siguiente').fadeOut(function() {
 			$(el).find('img.loader').fadeIn();
 		});
+
+		$.post(fbconfig.apiUrl + '/datos', {
+			first_name: $(el).find('input[name="first_name"]').val(),
+			last_name: $(el).find('input[name="last_name"]').val(),
+			email: $(el).find('input[name="email"]').val(),
+			telefono: $(el).find('input[name="telefono"]').val(),
+			celular: $(el).find('input[name="celular"]').val(),
+			comuna: $(el).find('input[name="comuna"]').val()
+		}, function(response) {
+			if (!response.error) {
+				window.location.replace('#ruleta');
+			} else {
+				$(el).find('img.loader').fadeOut(function() {
+					$(el).find('img.btn-siguiente').fadeIn();
+				});
+				alert('Error al intentar guardar los datos, intentalo nuevamente')
+			}
+		});
 	},
 
 	events: {

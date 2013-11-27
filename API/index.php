@@ -180,5 +180,36 @@ $app->post('/logout', function() use ($app) {
 });
 
 
+/* Datos */
+
+$app->post('/datos', authorize('user'), function() use ($app) {
+
+	$app->response()->header('Content-Type', 'application/json');
+
+	try {
+		$user = User::find($app->getEncryptedCookie('uid'));
+
+		$user->first_name = $app->request()->post('first_name');
+		$user->last_name = $app->request()->post('last_name');
+		$user->mail = $app->request()->post('email');
+		$user->telefono = $app->request()->post('telefono');
+		$user->celular = $app->request()->post('celular');
+		$user->comuna = $app->request()->post('comuna');
+
+		$user->save();
+
+		$response = array(
+			'msg' => 'ok'
+		);
+
+	} catch (Exception $e) {
+		$response = array(
+			'error' => $e->getMessage()
+		);
+	}
+
+	echo json_encode($response);
+});
+
 
 $app->run();

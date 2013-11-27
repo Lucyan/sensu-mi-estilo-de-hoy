@@ -1,12 +1,12 @@
 window.Router = Backbone.Router.extend({
     routes: {
         '': 'home',
-        'formulario': 'formulario'
+        'formulario': 'formulario',
+        'ruleta': 'ruleta'
     },
 
     beforeFilter: {
         filterMethod: function() {
-            console.log('beforeFilter');
             
             if (!window.activeSession.isAuthorized()) {
                 window.location.replace('#');
@@ -47,6 +47,19 @@ window.Router = Backbone.Router.extend({
             $('input[name="celular"]').val(window.activeSession.get('celular'));
             $('input[name="comuna"]').val(window.activeSession.get('comuna'));
         });
+    },
+
+    ruleta: function() {
+        if (!this.ruletaView) {
+            this.ruletaView = new RuletaView();
+            this.ruletaView.render();
+        } else {
+            this.ruletaView.delegateEvents();
+        }
+
+        cambiaVista(this.ruletaView.el, function() {
+            window.wheel.init();
+        });
     }
 })
 
@@ -58,7 +71,7 @@ function cambiaVista(newVista, callback) {
     });
 }
 
-templateLoader.load(["HomeView", "FormularioView"],
+templateLoader.load(["HomeView", "FormularioView", "RuletaView"],
     function () {
     app = new Router();
     Backbone.history.start();

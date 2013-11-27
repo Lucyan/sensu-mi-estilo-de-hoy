@@ -42,7 +42,8 @@
     </script>
 
     <?php if($config['Facebook']['liked']): ?>
-    	<script src="lib/jquery-1.7.2.min.js"></script>
+    	<script src="lib/jquery.min.js"></script>
+        <script src="lib/jquery.transit.min.js"></script>
 	    <script src="lib/underscore-min.js"></script>
 	    <script src="lib/backbone-min.js"></script>
 	    <script src="lib/backbone.routerFilters.js"></script>
@@ -52,6 +53,8 @@
 	    <script src="js/utils.js"></script>
 	    <script src="js/views/home.js"></script>
         <script src="js/views/formulario.js"></script>
+        <script src="js/views/ruleta.js"></script>
+        <script src="js/ruleta.js"></script>
 
 	    <script src="js/main.js"></script>
 	<?php endif; ?>
