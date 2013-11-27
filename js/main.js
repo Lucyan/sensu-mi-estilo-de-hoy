@@ -1,6 +1,7 @@
 window.Router = Backbone.Router.extend({
     routes: {
-        '': 'home'
+        '': 'home',
+        'formulario': 'formulario'
     },
 
     beforeFilter: {
@@ -27,11 +28,37 @@ window.Router = Backbone.Router.extend({
             this.homeView.delegateEvents();
         }
 
-        $("#content").html(this.homeView.el);
+        cambiaVista(this.homeView.el);
+    },
+
+    formulario: function() {
+        if (!this.formularioView) {
+            this.formularioView = new FormularioView();
+            this.formularioView.render();
+        } else {
+            this.formularioView.delegateEvents();
+        }
+
+        cambiaVista(this.formularioView.el, function() {
+            $('input[name="first_name"]').val(window.activeSession.get('first_name'));
+            $('input[name="last_name"]').val(window.activeSession.get('last_name'));
+            $('input[name="email"]').val(window.activeSession.get('email'));
+            $('input[name="telefono"]').val(window.activeSession.get('telefono'));
+            $('input[name="celular"]').val(window.activeSession.get('celular'));
+            $('input[name="comuna"]').val(window.activeSession.get('comuna'));
+        });
     }
 })
 
-templateLoader.load(["HomeView"],
+function cambiaVista(newVista, callback) {
+    $("#content").fadeOut(function() {
+        $("#content").html(newVista);
+        if (callback) callback();
+        $("#content").fadeIn();
+    });
+}
+
+templateLoader.load(["HomeView", "FormularioView"],
     function () {
     app = new Router();
     Backbone.history.start();

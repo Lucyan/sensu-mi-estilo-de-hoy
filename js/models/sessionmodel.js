@@ -2,8 +2,12 @@ SessionModel = Backbone.Model.extend({
     defaults: {
         id: null,
         third_party_id: null,
-        name: null,
+        first_name: null,
+        last_name: null,
         email: null,
+        telefono: null,
+        celular: null,
+        comuna: null,
         status: 0,
         isAdmin: false
     },
@@ -32,11 +36,21 @@ SessionModel = Backbone.Model.extend({
                         isAdmin: true
                     })
                 }
+
+                _session.set({
+                    first_name: t.user.first_name,
+                    last_name: t.user.last_name,
+                    email: t.user.mail,
+                    telefono: t.user.telefono,
+                    celular: t.user.celular,
+                    comuna: t.user.comuna
+                });
+
                 e.after && e.after()
             })
         };
         this._getuserdata = function (e) {
-            FB.api("/me?fields=third_party_id,email,name", function (t) {
+            FB.api("/me?fields=third_party_id,email,first_name,last_name", function (t) {
                 if (!t || t.error) {
                     e(true, t.error)
                 } else {
@@ -49,12 +63,19 @@ SessionModel = Backbone.Model.extend({
                 _session.set({
                     id: e["id"],
                     third_party_id: e["third_party_id"],
-                    name: e["name"],
-                    email: e["email"],
                     status: "1"
                 }, {
                     silent: true
                 });
+                if (_session.get("email") == null) {
+                    _session.set({
+                        first_name: e["first_name"],
+                        last_name: e["last_name"],
+                        email: e["email"]
+                    }, {
+                        silent: true
+                    });
+                }
                 t(null, "Everything is wonderful.")
             } else {
                 t(true, "third_party_id check failed!");

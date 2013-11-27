@@ -5,7 +5,7 @@
 <html lang="en">
 	<head>
         <meta charset="utf-8">
-        <title>- -</title>
+        <title>- Sensu -</title>
         <link href="css/reset.css" rel="stylesheet">
         <link href="fonts/stylesheet.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
@@ -51,6 +51,7 @@
 	    <script src="js/models/sessionmodel.js"></script>
 	    <script src="js/utils.js"></script>
 	    <script src="js/views/home.js"></script>
+        <script src="js/views/formulario.js"></script>
 
 	    <script src="js/main.js"></script>
 	<?php endif; ?>

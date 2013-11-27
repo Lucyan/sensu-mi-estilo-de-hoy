@@ -2,6 +2,9 @@
 require 'vendor/autoload.php';
 require 'config.php';
 
+date_default_timezone_set("America/Santiago");
+header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+
 $app = new \Slim\Slim();
 
 require 'session.php';
@@ -51,7 +54,7 @@ $app->configureMode('development', function() use ($app, $connections) {
 $app->hook("slim.before", function() use ($app, $facebook) {
   
     /* IE has problems with crossdomain cookies. */
-    header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+    //header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 
     /* When using FB.login(...) or already installed. */
     if(isset($_REQUEST["signed_request"])) {
@@ -114,10 +117,13 @@ $app->post('/login', function() use ($app, $facebook) {
 			$user->oauth_token = $facebook->getAccessToken();
 			$user->save();
 
-			if ($user->is_admin) {
-				$app->response()->header('Content-Type', 'application/json');
-				echo json_encode(array('isAdmin' => true));
-			}
+			$app->response()->header('Content-Type', 'application/json');
+
+			$response = array();
+			$response['user'] = $user->to_array();
+			$response['isAdmin'] = $user->is_admin;
+
+			echo json_encode($response);
 
 			$app->response()->status(202);
 		} else {
@@ -139,6 +145,15 @@ $app->post('/login', function() use ($app, $facebook) {
 				$user->save();
 
 				$app->setEncryptedCookie('uid', $user->id, '60 minutes');
+
+				$app->response()->header('Content-Type', 'application/json');
+
+				$response = array();
+				$response['user'] = $user->to_array();
+				$response['isAdmin'] = $user->is_admin;
+
+				echo json_encode($response);
+
 				$app->response()->status(201);
 
 			} catch (FacebookApiException $e) {
