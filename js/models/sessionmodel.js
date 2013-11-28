@@ -107,4 +107,4 @@ SessionModel = Backbone.Model.extend({
         }
     }
 });
-window.activeSession = new SessionModel
+window.activeSession = new SessionModel();

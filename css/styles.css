@@ -117,6 +117,73 @@ div#ruleta img.btn-girar {
 	cursor: pointer;
 }
 
+div#ruleta img.btn-siguiente {
+	margin-top: 70px;
+	opacity: 0.2;
+}
+
+/* MI ESTILO */
+
+div#miestilo {
+	background: url(../img/miestilo/bg.jpg);
+	width: 810px;
+	height: 1250px;
+	text-align: center;
+	padding: 0.1px;
+}
+
+div#miestilo img.estilo {
+	display: block;
+	margin: 0 auto;
+	margin-top: 400px;
+}
+
+div#miestilo img.btn-compartir {
+	margin-top: 100px;
+	cursor: pointer;
+}
+
+div#miestilo img.loader {
+	margin-top: 120px;
+	display: none;
+	top: 0;
+}
+
+/* FELICIDADES */
+
+div#felicidades {
+	background: url(../img/felicidades/bg.jpg);
+	width: 810px;
+	height: 1250px;
+	text-align: center;
+	padding: 0.1px;
+}
+
+div#felicidades img.btn-invitar {
+	margin-top: 1000px;
+	cursor: pointer;
+}
+
+/* PREMIOS */
+
+div#premios {
+	background: url(../img/premios/bg.jpg);
+	width: 810px;
+	height: 1250px;
+	text-align: center;
+	padding: 0.1px;
+}
+
+/* GANADORES */
+
+div#ganadores {
+	background: url(../img/ganadores/bg.jpg);
+	width: 810px;
+	height: 1250px;
+	text-align: center;
+	padding: 0.1px;
+}
+
 /* FOOTER */
 
 div#footer {

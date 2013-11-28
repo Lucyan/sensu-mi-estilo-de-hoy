@@ -3,8 +3,6 @@ window.wheel = {
     cache: {},
 
     init: function () {
-        console.log('controller init...');
-
         this.cache.wheel = $('.ruleta');
         this.cache.wheelSpinBtn = $('.btn-girar');
 
@@ -15,14 +13,9 @@ window.wheel = {
 
         //reset wheel
         this.resetSpin();
-
-        //setup prize events
-        //this.prizeEvents();
     },
 
     spin: function () {
-        console.log('spinning wheel');
-
         var _this = this;
 
         // reset wheel
@@ -53,15 +46,31 @@ window.wheel = {
         setTimeout(function () {
             // did it win??!?!?!
             var spin = _this.cache.wheelPos,
-                degrees = spin % 360;
+                degrees = spin % 360,
+                estilo = _this.win(degrees);
 
-            console.log('spin = ' + spin);
-            console.log('degrees = ' + degrees);
-            console.log('winfun = ' + _this.win(degrees));
-            console.log('win = ' + _this.cache.wheelMapping[_this.win(degrees)]);
+            $.post(fbconfig.apiUrl + '/estilo', {
+                estilo: estilo
+            }, function(response) {
 
-            //re-enable wheel spin
-            _this.cache.wheelSpinBtn.removeClass('disabled');
+                if (response.id != undefined) {
+                    window.miestilo.set({
+                        id: response.id,
+                        estilo: estilo,
+                        numero: response.numero
+                    });
+
+                    $('img.btn-siguiente').css('opacity', '1');
+                    $('img.btn-siguiente').css('cursor', 'pointer');
+
+                    $('img.btn-siguiente').click(function() {
+                        window.location.replace('#miestilo');
+                    });
+
+                } else {
+                    window.location.replace('#');
+                }
+            });
 
         }, duration);
 
@@ -69,15 +78,15 @@ window.wheel = {
 
     win: function(degrees) {
         if ((degrees >= 0 && degrees <= 38) || (degrees >= 328 && degrees <= 360)) {
-            return 0;
-        } else if (degrees >= 39 && degrees <= 111) {
             return 1;
-        } else if (degrees >= 112 && degrees <= 183) {
+        } else if (degrees >= 39 && degrees <= 111) {
             return 2;
-        } else if (degrees >= 184 && degrees <= 255) {
+        } else if (degrees >= 112 && degrees <= 183) {
             return 3;
-        } else if (degrees >= 256 && degrees <= 327) {
+        } else if (degrees >= 184 && degrees <= 255) {
             return 4;
+        } else if (degrees >= 256 && degrees <= 327) {
+            return 5;
         }
     },
 
@@ -86,6 +95,9 @@ window.wheel = {
             rotate: '0deg'
         }, 0);
         this.cache.wheelPos = 0;
+
+        //re-enable wheel spin
+        this.cache.wheelSpinBtn.removeClass('disabled');
     }
 
 }

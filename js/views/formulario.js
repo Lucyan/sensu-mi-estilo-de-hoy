@@ -11,7 +11,6 @@ window.FormularioView = Backbone.View.extend({
 			last_name: $(el).find('input[name="last_name"]').val(),
 			email: $(el).find('input[name="email"]').val(),
 			telefono: $(el).find('input[name="telefono"]').val(),
-			celular: $(el).find('input[name="celular"]').val(),
 			comuna: $(el).find('input[name="comuna"]').val()
 		}, function(response) {
 			if (!response.error) {

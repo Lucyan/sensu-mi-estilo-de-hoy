@@ -16,13 +16,13 @@
 	    	<div id="content">
 	    	</div>
             <div id="footer">
-                <a href="#">PREMIO</a>
+                <a href="#premios">PREMIO</a>
                 <img src="img/footer/separacion.png" />
-                <a href="#">GANADORES</a>
+                <a href="#ganadores">GANADORES</a>
                 <img src="img/footer/separacion.png" />
                 <a href="#">BASES</a>
                 <img src="img/footer/separacion.png" />
-                <a href="#">POLITICAS DE SEGURIDAD</a>
+                <a href="#">POLITICAS DE PRIVACIDAD</a>
             </div>
 	    <?php else: ?>
 	    	<div id="nolike">
@@ -50,10 +50,18 @@
 	    <script src="lib/async.js"></script>
 
 	    <script src="js/models/sessionmodel.js"></script>
+        <script src="js/models/estilomodel.js"></script>
+
 	    <script src="js/utils.js"></script>
+
 	    <script src="js/views/home.js"></script>
         <script src="js/views/formulario.js"></script>
         <script src="js/views/ruleta.js"></script>
+        <script src="js/views/miestilo.js"></script>
+        <script src="js/views/felicidades.js"></script>
+        <script src="js/views/premios.js"></script>
+        <script src="js/views/ganadores.js"></script>
+
         <script src="js/ruleta.js"></script>
 
 	    <script src="js/main.js"></script>

@@ -2,7 +2,11 @@ window.Router = Backbone.Router.extend({
     routes: {
         '': 'home',
         'formulario': 'formulario',
-        'ruleta': 'ruleta'
+        'ruleta': 'ruleta',
+        'miestilo': 'miestilo',
+        'felicidades': 'felicidades',
+        'premios': 'premios',
+        'ganadores': 'ganadores'
     },
 
     beforeFilter: {
@@ -60,6 +64,52 @@ window.Router = Backbone.Router.extend({
         cambiaVista(this.ruletaView.el, function() {
             window.wheel.init();
         });
+    },
+
+    miestilo: function() {
+        if (!this.miestiloView) {
+            this.miestiloView = new MiEstiloView();
+            this.miestiloView.render();
+        } else {
+            this.miestiloView.delegateEvents();
+        }
+
+        cambiaVista(this.miestiloView.el, function() {
+            $('img.estilo').attr('src', 'img/miestilo/estilos/' + window.miestilo.get('estilo') + '/' + window.miestilo.get('numero') + '.png')
+        });
+    },
+
+    felicidades: function() {
+        if (!this.felicidadesView) {
+            this.felicidadesView = new FelicidadesView();
+            this.felicidadesView.render();
+        } else {
+            this.felicidadesView.delegateEvents();
+        }
+
+        cambiaVista(this.felicidadesView.el);
+    },
+
+    premios: function() {
+        if (!this.premiosView) {
+            this.premiosView = new PremiosView();
+            this.premiosView.render();
+        } else {
+            this.premiosView.delegateEvents();
+        }
+
+        cambiaVista(this.premiosView.el);
+    },
+
+    ganadores: function() {
+        if (!this.ganadoresView) {
+            this.ganadoresView = new GanadoresView();
+            this.ganadoresView.render();
+        } else {
+            this.ganadoresView.delegateEvents();
+        }
+
+        cambiaVista(this.ganadoresView.el);
     }
 })
 
@@ -71,7 +121,7 @@ function cambiaVista(newVista, callback) {
     });
 }
 
-templateLoader.load(["HomeView", "FormularioView", "RuletaView"],
+templateLoader.load(["HomeView", "FormularioView", "RuletaView", "MiEstiloView", "FelicidadesView", "PremiosView", "GanadoresView"],
     function () {
     app = new Router();
     Backbone.history.start();

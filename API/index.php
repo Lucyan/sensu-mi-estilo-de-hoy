@@ -193,7 +193,6 @@ $app->post('/datos', authorize('user'), function() use ($app) {
 		$user->last_name = $app->request()->post('last_name');
 		$user->mail = $app->request()->post('email');
 		$user->telefono = $app->request()->post('telefono');
-		$user->celular = $app->request()->post('celular');
 		$user->comuna = $app->request()->post('comuna');
 
 		$user->save();
@@ -202,6 +201,65 @@ $app->post('/datos', authorize('user'), function() use ($app) {
 			'msg' => 'ok'
 		);
 
+	} catch (Exception $e) {
+		$response = array(
+			'error' => $e->getMessage()
+		);
+	}
+
+	echo json_encode($response);
+});
+
+$app->post('/estilo', authorize('user'), function() use ($app) {
+
+	$app->response()->header('Content-Type', 'application/json');
+
+	try {
+
+		$numero = rand(1, 5);
+
+		$estilo = new Estilos();
+
+		$estilo->user_id = $app->getEncryptedCookie('uid');
+		$estilo->estilo = $app->request()->post('estilo');
+		$estilo->numero = $numero;
+
+		$estilo->save();
+
+		$response = array(
+			'id' => $estilo->id,
+			'numero' => $numero
+		);
+		
+	} catch (Exception $e) {
+		$response = array(
+			'error' => $e->getMessage()
+		);
+	}
+
+	echo json_encode($response);
+});
+
+$app->post('/compartido', authorize('user'), function() use ($app) {
+
+	$app->response()->header('Content-Type', 'application/json');
+
+	try {
+
+		$numero = rand(1, 5);
+
+		$estilo = Estilos::find($app->request()->post('estilo_id'));
+
+		$estilo->compartido = true;
+		$estilo->fb_ob_id = $app->request()->post('id');
+		$estilo->fb_post_id = $app->request()->post('post_id');
+
+		$estilo->save();
+
+		$response = array(
+			'msg' => 'ok'
+		);
+		
 	} catch (Exception $e) {
 		$response = array(
 			'error' => $e->getMessage()
