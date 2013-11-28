@@ -9,7 +9,7 @@ window.MiEstiloView = Backbone.View.extend({
 
 			FB.api('/me/photos', 'post', {
 				message: 'mensaje compartir',
-				url: 'http://www.uimunicipalistas.org/act/images/Banderas/chile.png' //fbconfig.urlSite + $(el).find('img.estilo').attr('src')
+				url: fbconfig.urlSite + $(el).find('img.estilo').attr('src')
 			}, function(response){
 				if (!response.error) {
 					response.estilo_id = window.miestilo.get('id');
