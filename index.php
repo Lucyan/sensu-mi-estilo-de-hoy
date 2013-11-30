@@ -15,20 +15,19 @@
     	<?php if($config['Facebook']['liked']): ?>
 	    	<div id="content">
 	    	</div>
-            <div id="footer">
-                <a href="#premios">PREMIO</a>
-                <img src="img/footer/separacion.png" />
-                <a href="#ganadores">GANADORES</a>
-                <img src="img/footer/separacion.png" />
-                <a href="#">BASES</a>
-                <img src="img/footer/separacion.png" />
-                <a href="#">POLITICAS DE PRIVACIDAD</a>
-            </div>
 	    <?php else: ?>
 	    	<div id="nolike">
-	    		No eres fan de la página
 	    	</div>
 		<?php endif; ?>
+        <div id="footer">
+            <a href="#premios">PREMIO</a>
+            <img src="img/footer/separacion.png" />
+            <a href="#ganadores">GANADORES</a>
+            <img src="img/footer/separacion.png" />
+            <a href="#">BASES</a>
+            <img src="img/footer/separacion.png" />
+            <a href="#">POLITICAS DE PRIVACIDAD</a>
+        </div>
     </body>
     <script type="text/javascript">
         var fbconfig = {
@@ -40,30 +39,28 @@
             channel: '<?php echo URL_SITE; ?>' + 'channel.php'
         };
     </script>
+    
+	<script src="lib/jquery.min.js"></script>
+    <script src="lib/jquery.transit.min.js"></script>
+    <script src="lib/underscore-min.js"></script>
+    <script src="lib/backbone-min.js"></script>
+    <script src="lib/backbone.routerFilters.js"></script>
+    <script src="lib/async.js"></script>
 
-    <?php if($config['Facebook']['liked']): ?>
-    	<script src="lib/jquery.min.js"></script>
-        <script src="lib/jquery.transit.min.js"></script>
-	    <script src="lib/underscore-min.js"></script>
-	    <script src="lib/backbone-min.js"></script>
-	    <script src="lib/backbone.routerFilters.js"></script>
-	    <script src="lib/async.js"></script>
+    <script src="js/models/sessionmodel.js"></script>
+    <script src="js/models/estilomodel.js"></script>
 
-	    <script src="js/models/sessionmodel.js"></script>
-        <script src="js/models/estilomodel.js"></script>
+    <script src="js/utils.js"></script>
 
-	    <script src="js/utils.js"></script>
+    <script src="js/views/home.js"></script>
+    <script src="js/views/formulario.js"></script>
+    <script src="js/views/ruleta.js"></script>
+    <script src="js/views/miestilo.js"></script>
+    <script src="js/views/felicidades.js"></script>
+    <script src="js/views/premios.js"></script>
+    <script src="js/views/ganadores.js"></script>
 
-	    <script src="js/views/home.js"></script>
-        <script src="js/views/formulario.js"></script>
-        <script src="js/views/ruleta.js"></script>
-        <script src="js/views/miestilo.js"></script>
-        <script src="js/views/felicidades.js"></script>
-        <script src="js/views/premios.js"></script>
-        <script src="js/views/ganadores.js"></script>
+    <script src="js/ruleta.js"></script>
 
-        <script src="js/ruleta.js"></script>
-
-	    <script src="js/main.js"></script>
-	<?php endif; ?>
+    <script src="js/main.js"></script>
 </html>

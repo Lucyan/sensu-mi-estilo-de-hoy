@@ -22,10 +22,14 @@ img.loader {
 	top: 1085px;
 }
 
-div#content {
+div#content, div#nolike {
 	width: 810px;
 	height: 1250px;
 	position: relative;
+}
+
+div#nolike {
+	background: url(../img/fan/bg.jpg);
 }
 
 /* HOME */
