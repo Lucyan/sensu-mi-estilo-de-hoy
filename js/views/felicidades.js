@@ -3,7 +3,7 @@ window.FelicidadesView = Backbone.View.extend({
 	invitar: function() {
 		FB.ui({
 			method: 'apprequests',
-			message: 'mensaje invitación'
+			message: 'Selecciona a tus amigas para invitarlas a jugar "Mi estilo de hoy" de Espumante Sensus.'
 		}, function(r){});
 	},
 

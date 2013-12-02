@@ -8,7 +8,7 @@ window.MiEstiloView = Backbone.View.extend({
 			$(el).find('img.loader').fadeIn();
 
 			FB.api('/me/photos', 'post', {
-				message: 'mensaje compartir',
+				message: 'Ya estoy participando por un viaje a Buenos Aires con mi mejor amiga o un año de Espumante Sensus.\n\nIngresa a nuestro juego "Mi Estilo de Hoy", gira la ruleta para predecir tu estilo, compártelo y estarás participando por increíbles premios.\n\nhttp://apps.facebook.com/mi-estilo-de-hoy/',
 				url: fbconfig.urlSite + $(el).find('img.estilo').attr('src')
 			}, function(response){
 				if (!response.error) {
