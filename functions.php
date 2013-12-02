@@ -79,7 +79,7 @@
 		$path = str_replace($_SERVER['DOCUMENT_ROOT'], '', __DIR__);
 		$protocol = isset($_SERVER['HTTPS'])?'https://':'http://';
 		//$url = $protocol.$_SERVER['HTTP_HOST'].$path.'/';
-		$url = 'http://'.$_SERVER['HTTP_HOST'].$path.'/';
+		$url = 'https://'.$_SERVER['HTTP_HOST'].$path.'/';
 		define("URL_SITE",$url);
 	}
 
