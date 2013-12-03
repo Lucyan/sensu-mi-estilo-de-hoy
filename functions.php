@@ -77,7 +77,7 @@
 
 	function defineSiteURL(){
 		$path = str_replace($_SERVER['DOCUMENT_ROOT'], '', __DIR__);
-		$protocol = isset($_SERVER['HTTPS'])?'https://':'http://';
+		$protocol = ($_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
 		$url = $protocol.$_SERVER['HTTP_HOST'].$path.'/';
 		define("URL_SITE",$url);
 	}
