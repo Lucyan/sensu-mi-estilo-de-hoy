@@ -26,7 +26,7 @@
             <img src="img/footer/separacion.png" />
             <a href="#">BASES</a>
             <img src="img/footer/separacion.png" />
-            <a href="#">POLITICAS DE PRIVACIDAD</a>
+            <a href="politicas-de-privacidad.pdf" target="_blank">POLITICAS DE PRIVACIDAD</a>
         </div>
     </body>
     <script type="text/javascript">
