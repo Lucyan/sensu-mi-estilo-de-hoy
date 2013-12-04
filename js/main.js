@@ -76,6 +76,7 @@ window.Router = Backbone.Router.extend({
 
         cambiaVista(this.miestiloView.el, function() {
             $('img.estilo').attr('src', 'img/miestilo/estilos/' + window.miestilo.get('estilo') + '/' + window.miestilo.get('numero') + '.png')
+            $('img.estilo').attr('src-mini', 'img/miestilo/estilos-mini/' + window.miestilo.get('estilo') + '/' + window.miestilo.get('numero') + '.png')
         });
     },
 
