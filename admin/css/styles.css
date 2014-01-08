@@ -37,3 +37,7 @@ a.thumbnail {
 div#azar {
 	display: none;
 }
+
+table {
+	table-layout: fixed;
+}
