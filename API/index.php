@@ -269,5 +269,41 @@ $app->post('/compartido', authorize('user'), function() use ($app) {
 	echo json_encode($response);
 });
 
+/* Admin */
+
+$app->get('/admin/usuarios', authorize('admin'), function() use ($app) {
+	$app->response()->header('Content-Type', 'application/json');
+	$usuarios = User::all();
+	$json = array();
+
+	foreach ($usuarios as $usuario) {
+		$estilo = Estilos::find_all_by_user_id_and_compartido($usuario->id, 1);
+		$usuario = $usuario->to_array();
+
+		if (!empty($estilo)) {
+			$usuario['compartido'] = true;
+		} else {
+			$usuario['compartido'] = false;
+		}
+
+		array_push($json, $usuario);
+	}
+
+	echo json_encode($json);
+});
+
+$app->put('/admin/usuarios/:id', authorize('admin'), function($id) use ($app) {
+	$app->response()->header('Content-Type', 'application/json');
+
+	$usuario = User::find($id);
+
+	if (!empty($usuario)) {
+		($usuario->ganador) ? $usuario->ganador = false : $usuario->ganador = true;
+
+		$usuario->save();
+	}
+
+	echo json_encode(array('msg' => 'ok'));
+});
 
 $app->run();

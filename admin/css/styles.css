@@ -1,0 +1,35 @@
+body {
+	padding-top: 50px;
+}
+
+button.fblogin, div.nombre {
+	display: none;
+	margin-top-top: 10px;
+}
+
+div#content {
+	padding-top: 20px;
+	width: 100%;
+}
+
+/* Home */
+
+div#home {
+	padding: 40px 15px;
+	text-align: center;
+}
+
+ul.nav-menu {
+	display: none;
+}
+
+/* Admin */
+
+td.center {
+	text-align: center;
+}
+
+a.thumbnail {
+	width: 150px;
+	height: 150px;
+}
