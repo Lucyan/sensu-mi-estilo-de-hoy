@@ -24,7 +24,7 @@
             <img src="img/footer/separacion.png" />
             <a href="#ganadores">GANADORES</a>
             <img src="img/footer/separacion.png" />
-            <a href="#">BASES</a>
+            <a href="bases-legales.pdf" target="_blank">BASES</a>
             <img src="img/footer/separacion.png" />
             <a href="politicas-de-privacidad.pdf" target="_blank">POLITICAS DE PRIVACIDAD</a>
         </div>

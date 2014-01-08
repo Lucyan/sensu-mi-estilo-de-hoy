@@ -7,11 +7,17 @@ window.MiEstiloView = Backbone.View.extend({
 		$(el).find('img.btn-compartir').fadeOut(function() {
 			$(el).find('img.loader').fadeIn();
 
-			FB.api('/me/photos', 'post', {
-				message: 'Ya estoy participando por un viaje a Buenos Aires con mi mejor amiga o un año de Espumante Sensus.\n\nIngresa a nuestro juego "Mi Estilo de Hoy", gira la ruleta para predecir tu estilo, compártelo y estarás participando por increíbles premios.\n\nhttp://apps.facebook.com/mi-estilo-de-hoy/',
-				url: fbconfig.urlSite + $(el).find('img.estilo').attr('src')
-			}, function(response){
-				if (!response.error) {
+			var obj = {
+				method: 'feed',
+				link: fbconfig.urlSite,
+				picture: fbconfig.urlSite + $(el).find('img.estilo').attr('src-mini'),
+				name: 'Mi Estilo de Hoy',
+				caption: 'Espumante Sensus',
+				description:  'Ya estoy participando por un viaje a Buenos Aires con mi mejor amiga o un año de Espumante Sensus. Ingresa a nuestro juego "Mi Estilo de Hoy", gira la ruleta para predecir tu estilo, compártelo y estarás participando por increíbles premios.'
+			};
+
+			FB.ui(obj, function(response){
+				if (response) {
 					response.estilo_id = window.miestilo.get('id');
 					$.post(fbconfig.apiUrl + '/compartido', response, function(response) {
 						if (!response.error) {
