@@ -4,6 +4,7 @@ require 'config.php';
 
 date_default_timezone_set("America/Santiago");
 header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+header('Access-Control-Allow-Origin: *');
 
 $app = new \Slim\Slim();
 
