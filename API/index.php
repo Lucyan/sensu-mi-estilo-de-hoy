@@ -281,9 +281,9 @@ $app->get('/admin/usuarios', authorize('admin'), function() use ($app) {
 		$usuario = $usuario->to_array();
 
 		if (!empty($estilo)) {
-			$usuario['compartido'] = true;
+			$usuario['compartido'] = 1;
 		} else {
-			$usuario['compartido'] = false;
+			$usuario['compartido'] = 0;
 		}
 
 		array_push($json, $usuario);

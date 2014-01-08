@@ -1,7 +1,11 @@
 window.UsersView = Backbone.View.extend({
+	pagina: 1,
+	porpagina: 20,
 
 	menu: function(e) {
 		e.preventDefault();
+
+		$('div#azar').hide();
 
 		switch ($(e.currentTarget).attr('menu')) {
 			case 'todos':
@@ -9,6 +13,7 @@ window.UsersView = Backbone.View.extend({
 				break;
 			case 'compartieron':
 				this.compartieron();
+				$('div#azar').show();
 				break;
 			case 'ganadores':
 				this.ganadores();
@@ -31,7 +36,7 @@ window.UsersView = Backbone.View.extend({
 	compartieron: function() {
 		var _this = this;
 		$('table#datos tbody').empty();
-		_.each(users_collection.getModel({compartido: true}), function(model) {
+		_.each(users_collection.getModel({compartido: 1}), function(model) {
 			_this.printModel(model);
 		});
 	},
@@ -39,15 +44,21 @@ window.UsersView = Backbone.View.extend({
 	ganadores: function() {
 		var _this = this;
 		$('table#datos tbody').empty();
-		_.each(users_collection.getModel({ganador: true}), function(model) {
+		_.each(users_collection.getModel({ganador: 1}), function(model) {
 			_this.printModel(model);
 		});
 	},
 
-	printModel: function(model) {
+	printModel: function(model, table) {
+
+		if (table == undefined) {
+			table = 'table#datos tbody';
+		}
+
 		var display = '<tr>';
 
 		display += '<td>';
+		display += '<img src="http://graph.facebook.com/' + model.get('facebook_id') + '/picture" />&nbsp;&nbsp;&nbsp;&nbsp;';
 		display += '<a href="' + model.get('link') + '" target="_blank">';
 		display += model.get('first_name') + ' ' + model.get('last_name');
 		display += '</a>';
@@ -80,13 +91,13 @@ window.UsersView = Backbone.View.extend({
 
 		display += '</tr>';
 
-		$('table#datos tbody').append(display);
+		$(table).append(display);
 	},
 
 	actualizarBadges: function() {
 		$('ul.nav li[menu="todos"] a span.badge').html(users_collection.length);
-		$('ul.nav li[menu="compartieron"] a span.badge').html(users_collection.getModel({compartido: true}).length);
-		$('ul.nav li[menu="ganadores"] a span.badge').html(users_collection.getModel({ganador: true}).length);
+		$('ul.nav li[menu="compartieron"] a span.badge').html(users_collection.getModel({compartido: 1}).length);
+		$('ul.nav li[menu="ganadores"] a span.badge').html(users_collection.getModel({ganador: 1}).length);
 	},
 
 	ganador: function(e) {
@@ -110,9 +121,18 @@ window.UsersView = Backbone.View.extend({
 		}
 	},
 
+	getAzar: function() {
+		models = users_collection.getModel({compartido: 1, ganador: 0});
+		model = models[Math.floor(Math.random() * models.length)];
+
+		$('table#seleccionar tbody').empty();
+		this.printModel(model, 'table#seleccionar tbody');
+	},
+
 	events: {
 		'click ul.nav li': 'menu',
-		'click button.ganador': 'ganador'
+		'click button.ganador': 'ganador',
+		'click div#azar button': 'getAzar'
     },
 	initialize: function() {
 		_(this).bindAll('render');

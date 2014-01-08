@@ -33,3 +33,7 @@ a.thumbnail {
 	width: 150px;
 	height: 150px;
 }
+
+div#azar {
+	display: none;
+}
