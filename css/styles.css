@@ -193,8 +193,51 @@ div#ganadores {
 	padding: 0.1px;
 }
 
+div#ganadores div.lista {
+	margin-top: 630px;
+}
+
+div#ganadores div.lista ul {
+	list-style-type: none;
+	display: inline-block;
+}
+
+div#ganadores div.lista ul li {
+	float: left;
+	width: 230px;
+	margin: 0 10px;
+}
+
+div#ganadores div.lista ul li div.imagen {
+	background-color: #fff;
+	padding: 10px;
+	padding-bottom: 45px;	
+}
+
+div#ganadores div.lista ul li div.imagen img {
+	width: 210px;
+}
+
+div#ganadores div.lista ul li div.texto {
+	color: #fff;
+	font-family: 'blanchcondensed';
+	font-size: 2em;
+	margin-top: 5px;
+}
+
+div#ganadores div.lista ul li div.texto span {
+	height: 64px;
+	overflow: hidden;
+	display: block;
+}
+
+div#ganadores div.lista ul li div.texto hr {
+	border-top: 2px solid #fff;
+	margin: 0;
+}
+
 div#ganadores img.btn-inicio {
-	margin-top: 1000px;
+	margin-top: 30px;
 	cursor: pointer;
 }
 

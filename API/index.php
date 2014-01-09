@@ -270,6 +270,27 @@ $app->post('/compartido', authorize('user'), function() use ($app) {
 	echo json_encode($response);
 });
 
+$app->get('/ganadores', function() use ($app) {
+	$app->response()->header('Content-Type', 'application/json');
+	$ganadores = User::find_all_by_ganador(1);
+	$json = array();
+
+	if (!empty($ganadores)) {
+		foreach ($ganadores as $ganador) {
+			$data = array(
+				'nombre' => $ganador->first_name . ' ' . $ganador->last_name,
+				'fbid' => $ganador->facebook_id,
+				'premio' => '1 AÑO DE SENSUS GRATIS'
+			);
+
+			array_push($json, $data);
+		}
+	}
+
+	echo json_encode($json);
+
+});
+
 /* Admin */
 
 $app->get('/admin/usuarios', authorize('admin'), function() use ($app) {

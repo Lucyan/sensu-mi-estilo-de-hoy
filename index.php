@@ -49,6 +49,7 @@
 
     <script src="js/models/sessionmodel.js"></script>
     <script src="js/models/estilomodel.js"></script>
+    <script src="js/models/ganadoresmodel.js"></script>
 
     <script src="js/utils.js"></script>
 
